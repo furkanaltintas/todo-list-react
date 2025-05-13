@@ -5,9 +5,33 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-color: #1d2830;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+.form {
+  background-color: #ecf0f1;
+  padding: 30px;
+  margin-top: 10px;
+}
+
+.title {
+  color: #245372;
+}
+
+.list {
+  background-color: #ffffff;
+  padding: 30px;
+  margin-top: 10px;
+}
+
+.form-control {
+  border-radius: 0;
+}
+
+.btn {
+  --bs-btn-border-radius: 0px;
+}
+
+i {
+  cursor: pointer;
 }

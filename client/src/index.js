@@ -1,17 +1,37 @@
-import React from 'react';
 import ReactDOM from 'react-dom/client';
-import './index.css';
+
+// ApolloClient: GraphQL istemcisi oluşturmak için
+// InMemoryCache: Apollo'nun önbellek sistemi
+// ApolloProvider: React uygulamasına Apollo entegrasyonu sağlayan bileşen
+import { ApolloClient, InMemoryCache, ApolloProvider } from '@apollo/client';
 import App from './App';
-import reportWebVitals from './reportWebVitals';
+
+import './index.css';
+
+// Apollo Client örneği oluşturuyoruz
+const client = new ApolloClient({
+  uri: 'http://localhost:5000/graphql', // GraphQL sunucusunun adresi
+  cache: new InMemoryCache() // Verileri RAM üzerinde cache'ler
+});
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
+
+// Uygulamayı ApolloProvider ile sarmalayarak çalıştırıyoruz
+// Böylece alt bileşenlerde Apollo özelliklerini kullanabiliyoruz
 root.render(
-  <React.StrictMode>
+  <ApolloProvider client={client}>
     <App />
-  </React.StrictMode>
+  </ApolloProvider>
 );
 
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();
+/*
+Apollo Client Nedir, Ne İşe Yarar ?
+
+Apollo Client, GraphQL API'lerine bağlanmak, veri sorgulamak ve önbellekle yönetmek için kullanılan güçlü bir istemci kütüphanesidir. 
+Özellikle React gibi SPA mimarilerinde şu işleri kolaylaştırır:
+-   GraphQL sorguları (query) ve mutasyonları (mutation) ile veri alıp gönderme
+-   Cache (önbellekleme) sayesinde veriyi tekrar tekrar istememek
+-   Loading, error gibi durumları yönetme
+-   React ile çok iyi entegre olur (useQuery, useMutation gibi hook'lar sağlar)
+Apollo Client, REST API yerine GraphQL kullanan projelerde tercih edilir.
+*/
