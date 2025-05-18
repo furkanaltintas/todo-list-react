@@ -7,7 +7,7 @@ build/
 # Client ve Server özel
 client/node_modules/
 server/node_modules/
-server/.env
+server/.env/
 client/dist/
 server/dist/
 
