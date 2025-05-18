@@ -10,7 +10,6 @@ server/node_modules/
 server/.env/
 client/dist/
 server/dist/
-server/.env
 
 # Loglar
 *.log
